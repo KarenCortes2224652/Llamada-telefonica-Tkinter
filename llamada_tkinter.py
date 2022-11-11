@@ -6,9 +6,12 @@ from tkinter import messagebox
 # Funciones de la app
 
 def Tiempo():
-    messagebox.showinfo("Tiempo de duración de la llamada", "Hizo clic en el botón Tiempo...")
-    z = int(x.get()) 
-    t_resultados.insert(INSERT, "Según los minutos adicionales " + x.get()+" el costo de la llamada es "+str(z)+"\n")
+    z = int(x.get())
+    M= int(300+(z-3)*50)
+    if M>3:
+        t_resultados.insert(INSERT, "Valor a pagar: "+str(M)+"\n")
+    else:
+        t_resultados.insert(INSERT, "Valor a pagar: $300""\n")
 
 def Borrar():
     messagebox.showinfo("Suma 1.0", "Los datos serán borrados...")
@@ -51,7 +54,7 @@ frame_entrada.place(x = 10, y = 10)
 # Logo de la App
 logo = PhotoImage(file="img/imagen5.png")
 lb_logo = Label(frame_entrada, image=logo)
-lb_logo.place(x=50, y=70)
+lb_logo.place(x=50, y=55)
 
 # Etiquetas par el titulo de app
 titulo = Label(frame_entrada, text = "CALCULAR DURACIÓN EN UNA LLAMADA")
@@ -61,7 +64,7 @@ titulo.place(x = 30, y = 10)
 # Etiqueta para mensaje
 lb_j = Label(frame_entrada, text = "Si su llamada dura \n""3 minutos o menos\n""tiene un costo de $300,\n""de lo contrario digite\n"" el tiempo transcurrido")
 lb_j.config(bg="aquamarine2", fg="black", font=("Arial",16))
-lb_j.place(x=120, y=20, width=280, height=140)
+lb_j.place(x=210, y=40, width=230, height=140)
 
 # Etiqueta para tiempo
 lb_x = Label(frame_entrada, text = "Duración: ")
