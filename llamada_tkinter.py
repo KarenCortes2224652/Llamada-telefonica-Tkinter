@@ -7,13 +7,12 @@ from tkinter import messagebox
 
 def Tiempo():
     messagebox.showinfo("Tiempo de duración de la llamada", "Hizo clic en el botón Tiempo...")
-    z = int(x.get()) + int(y.get())
-    t_resultados.insert(INSERT, "La suma de " + x.get()+ " + " +y.get()+" casi siempre es "+str(z)+"\n")
+    z = int(x.get()) 
+    t_resultados.insert(INSERT, "Según los minutos adicionales " + x.get()+" el costo de la llamada es "+str(z)+"\n")
 
 def Borrar():
     messagebox.showinfo("Suma 1.0", "Los datos serán borrados...")
     x.set("")
-    y.set("")
     t_resultados.delete("1.0","end")
 
 def Salir():
@@ -40,7 +39,6 @@ ventana_principal.resizable(0,0)
 ventana_principal.config(bg="black")
 
 x = StringVar()
-y = StringVar()
 
 #--------------------
 # Frame entrada datos
@@ -51,25 +49,31 @@ frame_entrada.config(bg = "aquamarine2", width = 480 , height = 240)
 frame_entrada.place(x = 10, y = 10)
 
 # Logo de la App
-logo = PhotoImage(file="img/llamada.png")
+logo = PhotoImage(file="img/imagen5.png")
 lb_logo = Label(frame_entrada, image=logo)
-lb_logo.place(x=10, y=10)
+lb_logo.place(x=50, y=70)
 
 # Etiquetas par el titulo de app
 titulo = Label(frame_entrada, text = "CALCULAR DURACIÓN EN UNA LLAMADA")
 titulo.config(bg = "aquamarine2", fg = "black", font = ("Arial",16))
 titulo.place(x = 30, y = 10)
 
+# Etiqueta para mensaje
+lb_j = Label(frame_entrada, text = "Si su llamada dura \n""3 minutos o menos\n""tiene un costo de $300,\n""de lo contrario digite\n"" el tiempo transcurrido")
+lb_j.config(bg="aquamarine2", fg="black", font=("Arial",16))
+lb_j.place(x=120, y=20, width=280, height=140)
+
 # Etiqueta para tiempo
 lb_x = Label(frame_entrada, text = "Duración: ")
 lb_x.config(bg="aquamarine2", fg="black", font=("Arial",16))
-lb_x.place(x=220, y=70, width=115, height=30)
+lb_x.place(x=220, y=180, width=115, height=30)
 
 # Entry para tiempo
 entry_x = Entry(frame_entrada, textvariable=x)
 entry_x.config(font=("Arial",25), justify=LEFT,fg="black")
 entry_x.focus_set()
-entry_x.place(x=330, y=70, width=115, height=30)
+entry_x.place(x=330, y=180, width=115, height=30)
+
 
 #--------------------
 # Frame operaciones
@@ -80,7 +84,7 @@ frame_operaciones.config(bg = "aquamarine2", width = 480 , height = 120)
 frame_operaciones.place(x = 10, y = 260)
 
 # Botón para sumar
-bt_tiempo = Button(frame_operaciones, text="TIEMPO", command=Tiempo)
+bt_tiempo = Button(frame_operaciones, text="COSTO", command=Tiempo)
 bt_tiempo.place(x=45, y=45, width=100, height=30)
 
 # Botón borrar
